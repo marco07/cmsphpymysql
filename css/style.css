@@ -1,0 +1,11 @@
+body{
+	background: rgba(187,187,85,0.8) url("../img/food.png");
+}
+.contenido{
+	background: rgba(255,255,255,0.7);
+	padding: 2em;
+}
+.bg-dark{
+	background: #980000 !important;
+
+}
