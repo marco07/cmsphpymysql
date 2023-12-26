@@ -66,6 +66,25 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="dashboard.js"></script>
+         
+<link href="https://cdn.datatables.net/v/bs4/jqc-1.12.4/dt-1.13.8/datatables.min.css" rel="stylesheet">
+ 
+<script src="https://cdn.datatables.net/v/bs4/jqc-1.12.4/dt-1.13.8/datatables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+  var table = $('#tableData').DataTable({ 
+        select: false,
+        "columnDefs": [{
+            className: "Name", 
+            "targets":[0],
+            "visible": false,
+            "searchable":false
+        }]
+    });//End of create main table
 
+} );
+</script>
+
+</script>
 </body>
 </html>

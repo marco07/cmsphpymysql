@@ -13,6 +13,8 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../css/icono.css">
 	<link rel="stylesheet" type="text/css" href="../css/admin.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">

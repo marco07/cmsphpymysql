@@ -7,7 +7,7 @@
   <hr>
   <a href="formUser.php" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-add"></span> Agregar Usuario</a>
   <br><br>
- <table class="table no-margin" style="background: white"> 
+ <table class="table no-margin" style="background: white" id="tableData"> 
                   <thead>
                   <tr>
                     <th>Id</th>

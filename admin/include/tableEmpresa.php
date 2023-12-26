@@ -7,7 +7,7 @@
   <hr>
   <a href="formEmpresa.php" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-add"></span> Agregar Empresa</a>
   <br><br>
- <table class="table no-margin" style="background: white"> 
+ <table class="table no-margin" style="background: white" id="tableData"> 
                   <thead>
                   <tr>
                     <th>Id</th>
@@ -27,7 +27,7 @@
                             <tr>
                               <td><?php echo $value['id']?></td>
                               <td><?php echo $value['titulo']?></td>
-                              <td><?php echo $value['descripcion']?></td>
+                              <td style="width:40%"><?php echo $value['descripcion']?></td>
                               <td>
                                   <img src="../img/<?php echo $value['imagen']?>" style="width: 200px;">
                               </td>

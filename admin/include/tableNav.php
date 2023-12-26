@@ -7,7 +7,7 @@
   <hr>
   <a href="formNav.php" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-add"></span> Agregar Navegacion</a>
   <br><br>
- <table class="table no-margin" style="background: white"> 
+ <table class="table no-margin" style="background: white" id="tableData"> 
                   <thead>
                   <tr>
                     <th>Id</th>
