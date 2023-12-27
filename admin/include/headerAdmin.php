@@ -56,7 +56,7 @@ session_start();
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="principal.php?menu=6">
             	<span class="glyphicon glyphicon-check"></span> Platos 
             </a>
           </li>

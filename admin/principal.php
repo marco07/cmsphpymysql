@@ -43,6 +43,10 @@
         case 5:
           include("include/tableEmpresa.php");
           break;
+
+        case 6:
+          include("include/tablePlatos.php");
+          break;
         
         default:
           echo 'No hay datos que mostrar';
