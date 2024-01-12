@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 11-02-2019 a las 20:20:49
--- Versión del servidor: 5.7.24
--- Versión de PHP: 7.2.14
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-01-2024 a las 11:19:11
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,8 +18,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `paradise`
+-- Base de datos: `restaurante`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `idCategoria` int(10) UNSIGNED NOT NULL,
+  `Categoria` varchar(200) NOT NULL,
+  `Imagen` varchar(200) NOT NULL,
+  `FechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`idCategoria`, `Categoria`, `Imagen`, `FechaRegistro`) VALUES
+(1, 'Bebidas', '', '2024-01-09 02:08:33'),
+(2, 'Carnes', '', '2024-01-09 02:08:33'),
+(3, 'Mariscos', '', '2024-01-09 02:08:47'),
+(4, 'Ensaladas', '', '2024-01-09 02:08:47');
 
 -- --------------------------------------------------------
 
@@ -28,25 +50,23 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `combo`
 --
 
-DROP TABLE IF EXISTS `combo`;
-CREATE TABLE IF NOT EXISTS `combo` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `combo` (
+  `id` int(10) UNSIGNED NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `precio` int(11) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `url` varchar(50) NOT NULL,
-  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `combo`
 --
 
 INSERT INTO `combo` (`id`, `titulo`, `precio`, `descripcion`, `url`, `fechaRegistro`) VALUES
-(1, 'Paradise Combo', 60, '2 platos de tu elección\r\nPostres\r\nBebidas ilimintado\r\nUna ensalada', '#', '2019-02-11 18:27:49'),
-(2, 'Paradise Familiar', 120, '4 platos de tu elección\r\nPostres\r\nBebidas ilimintado\r\nDos ensaladas', '#', '2019-02-11 18:29:23'),
-(3, 'Paradise', 250, 'Comida Buffet\r\nPostres ilimitados\r\nBebidas ilimintado\r\nEnsaladas ilimitadas', '#', '2019-02-11 18:29:23');
+(1, 'Paradise Combo', 600, '                                             2 platos de tu elección\r\nPostres\r\nBebidas ilimintado\r\nUna ensalada                                       ', '#', '2023-12-21 02:06:16'),
+(2, 'Paradise Familiar', 1200, '               4 platos de tu elección\r\nPostres\r\nBebidas ilimintado\r\nDos ensaladas             ', '#', '2023-12-21 02:05:34'),
+(3, 'Paradise', 500, '               Comida Buffet\r\nPostres ilimitados\r\nBebidas ilimintado\r\nEnsaladas ilimitadas             ', '#', '2023-12-21 02:05:45');
 
 -- --------------------------------------------------------
 
@@ -54,22 +74,20 @@ INSERT INTO `combo` (`id`, `titulo`, `precio`, `descripcion`, `url`, `fechaRegis
 -- Estructura de tabla para la tabla `empresa`
 --
 
-DROP TABLE IF EXISTS `empresa`;
-CREATE TABLE IF NOT EXISTS `empresa` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `empresa` (
+  `id` int(10) UNSIGNED NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descripcion` longtext NOT NULL,
   `imagen` varchar(15) NOT NULL,
-  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `empresa`
 --
 
 INSERT INTO `empresa` (`id`, `titulo`, `descripcion`, `imagen`, `fechaRegistro`) VALUES
-(1, 'Paradise Lobster & Steakhouse', 'En Paradise mantenemos cada día el compromiso de servir y preparar cada plato con calidad excepcional y ofrecer a cada uno de nuestros huéspedes un servicio personalizado que ha situado a Paradise en una categoría de primer nivel por su amplio menú internacional donde encontrarás los mejores Cortes de Carne, Langosta Importada, así como otros exclusivos y frescos frutos del Mar, que junto con sus exclusivas Cremas y Entradas Internacionales hacen del menú de Paradise un verdadero deleite para gustos exigentes.', 'destacado.jpg', '2019-02-11 18:22:41');
+(1, 'Paradise Lobster & Steakhouse', 'En Paradise mantenemos cada día el compromiso de servir y preparar cada plato con calidad excepcional y ofrecer a cada uno de nuestros huéspedes un servicio personalizado que ha situado a Paradise en una categoría de primer nivel por su amplio menú internacional donde encontrarás los mejores Cortes de Carne, Langosta Importada, así como otros exclusivos y frescos frutos del Mar, que junto con sus exclusivas Cremas y Entradas Internacionales hacen del menú de Paradise un verdadero deleite para gustos exigentes.', 'destacado.jpg', '2023-12-26 01:52:53');
 
 -- --------------------------------------------------------
 
@@ -77,22 +95,20 @@ INSERT INTO `empresa` (`id`, `titulo`, `descripcion`, `imagen`, `fechaRegistro`)
 -- Estructura de tabla para la tabla `navegacion`
 --
 
-DROP TABLE IF EXISTS `navegacion`;
-CREATE TABLE IF NOT EXISTS `navegacion` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `navegacion` (
+  `id` int(10) UNSIGNED NOT NULL,
   `opcion` varchar(25) NOT NULL,
   `url` varchar(50) NOT NULL,
   `icono` varchar(50) NOT NULL,
-  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `navegacion`
 --
 
 INSERT INTO `navegacion` (`id`, `opcion`, `url`, `icono`, `fechaRegistro`) VALUES
-(1, 'Inicio', '#', 'glyphicon glyphicon-home', '2019-02-11 18:09:46'),
+(1, 'Inicio', 'index.php', 'glyphicon glyphicon-home', '2023-12-18 03:23:11'),
 (2, 'Menu', '#', 'glyphicon glyphicon-list-alt', '2019-02-11 18:09:46'),
 (3, 'Promociones', '#', 'glyphicon glyphicon-gift', '2019-02-11 18:10:56'),
 (4, 'Bebidas', '#', 'glyphicon glyphicon-credit-card', '2019-02-11 18:10:56');
@@ -103,29 +119,30 @@ INSERT INTO `navegacion` (`id`, `opcion`, `url`, `icono`, `fechaRegistro`) VALUE
 -- Estructura de tabla para la tabla `platos`
 --
 
-DROP TABLE IF EXISTS `platos`;
-CREATE TABLE IF NOT EXISTS `platos` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `platos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `NombrePlato` varchar(200) NOT NULL,
   `imagen` varchar(15) NOT NULL,
-  `detalle` varchar(100) NOT NULL,
+  `detalle` varchar(200) NOT NULL,
   `urlDetalle` varchar(50) NOT NULL,
   `urlReservar` varchar(50) NOT NULL,
   `tiempoPreparacion` int(11) NOT NULL,
-  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `idCategoria` int(11) NOT NULL,
+  `Precio` double NOT NULL,
+  `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `platos`
 --
 
-INSERT INTO `platos` (`id`, `imagen`, `detalle`, `urlDetalle`, `urlReservar`, `tiempoPreparacion`, `fechaRegistro`) VALUES
-(1, 'carne.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#', '#', 30, '2019-02-11 18:02:09'),
-(2, 'pasta.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#', '#', 20, '2019-02-11 18:02:09'),
-(3, 'filetepollo.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#', '#', 25, '2019-02-11 18:05:39'),
-(4, 'carne.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#', '#', 20, '2019-02-11 18:05:55'),
-(5, 'pasta.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#', '#', 15, '2019-02-11 18:07:23'),
-(6, 'filetepollo.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#', '#', 45, '2019-02-11 18:07:23');
+INSERT INTO `platos` (`id`, `NombrePlato`, `imagen`, `detalle`, `urlDetalle`, `urlReservar`, `tiempoPreparacion`, `idCategoria`, `Precio`, `fechaRegistro`) VALUES
+(1, 'Carne Asada', 'carne.jpg', 'Frescos trozos de carnes, vegetales, vino y camarones, mezclados en perfecta armonía.', '#detalle', '#', 30, 2, 20, '2024-01-09 02:12:55'),
+(2, 'Pollo a la plancha', 'pasta.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#detalle', '#', 20, 2, 15, '2024-01-09 02:13:02'),
+(3, 'Filete de pescado', 'filetepollo.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#detalle', '#', 25, 3, 17, '2024-01-09 02:13:10'),
+(4, 'Ensalada', 'carne.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#detalle', '#', 20, 4, 0, '2024-01-09 02:24:44'),
+(5, 'Vino', 'pasta.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#detalle', '#', 15, 1, 0, '2024-01-09 02:25:07'),
+(6, 'Pescado', 'filetepollo.jpg', 'Frescos trozos de langosta, almejas, róbalo y camarones, mezclados en perfecta armonía.', '#detalle', '#', 45, 3, 0, '2024-01-09 02:25:22');
 
 -- --------------------------------------------------------
 
@@ -133,9 +150,8 @@ INSERT INTO `platos` (`id`, `imagen`, `detalle`, `urlDetalle`, `urlReservar`, `t
 -- Estructura de tabla para la tabla `slider`
 --
 
-DROP TABLE IF EXISTS `slider`;
-CREATE TABLE IF NOT EXISTS `slider` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `slider` (
+  `id` int(10) UNSIGNED NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descripcion` varchar(150) NOT NULL,
   `imagen` varchar(15) NOT NULL,
@@ -143,18 +159,17 @@ CREATE TABLE IF NOT EXISTS `slider` (
   `textoBoton` varchar(50) NOT NULL,
   `url` varchar(50) NOT NULL,
   `activado` varchar(50) NOT NULL,
-  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `slider`
 --
 
 INSERT INTO `slider` (`id`, `titulo`, `descripcion`, `imagen`, `clase`, `textoBoton`, `url`, `activado`, `fechaRegistro`) VALUES
-(1, 'Excelentes Bebidas.', 'Enamorate de nuestras bebidas preparadas con ingredientes de la mejor calidad para clientes exlusivos como tu.', 'slide1.jpg', 'first-slide', 'Comprar ahora!', '#', 'active', '2019-02-11 19:22:56'),
-(2, 'Carnes y filetes', 'Restaurante abrió sus puertas en 1983 en El Salvador. Desde el inicio de nuestro servicio ha sido inigualable.', 'slide2.jpg', 'second-slide', 'Reserva ahora !', '#', '', '2019-02-11 17:53:17'),
-(3, 'Las mejores comidas', 'Amamos las buenas hamburguesas, y nos fascina lo que produce: las pláticas, las ideas, los lazos y los momentos', 'slide3.jpg', 'third-slide', 'Comprar ahora !', '#', '', '2019-02-11 17:53:17');
+(1, 'Excelentes Bebidas.', 'Enamorate de nuestras bebidas preparadas con ingredientes de la mejor calidad para clientes exlusivos como tu.', 'slide1.jpg', 'first-slide', 'Comprar ahora mismo!', '#', '', '2023-12-24 04:33:24'),
+(2, 'Carnes y filetes', 'Restaurante abrió sus puertas en 1983 en El Salvador. Desde el inicio de nuestro servicio ha sido inigualable.', 'slide2.jpg', 'second-slide', 'Reserva ahora !', '#', '', '2023-12-24 04:34:14'),
+(3, 'Las mejores comidas', 'Amamos las buenas hamburguesas, y nos fascina lo que produce: las pláticas, las ideas, los lazos y los momentos', 'slide3.jpg', 'third-slide', 'Comprar ahora !', '#', 'active', '2023-12-24 04:34:27');
 
 -- --------------------------------------------------------
 
@@ -162,24 +177,115 @@ INSERT INTO `slider` (`id`, `titulo`, `descripcion`, `imagen`, `clase`, `textoBo
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuario` (
+  `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(8) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `username`, `password`, `name`, `email`, `fechaRegistro`) VALUES
-(1, 'paradise', '123', 'Marco Andrade', 'marco@marco.com', '2019-02-10 18:35:31'),
-(2, 'marco', '321', 'Antonio Guerrero', 'antonio@marco.com', '2019-02-10 18:35:31');
+(1, 'paradise', '123', 'Marco Andrade Guerrero', 'marco@marco.com', '2023-12-15 02:12:18'),
+(2, 'marco', '321', 'Antonio Guerrero', 'antonio@marco.com', '2019-02-10 18:35:31'),
+(3, 'jose lopez', '123', 'Jose Lopez', 'jose@lopez.com', '2023-12-15 02:13:16');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Indices de la tabla `combo`
+--
+ALTER TABLE `combo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `navegacion`
+--
+ALTER TABLE `navegacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `platos`
+--
+ALTER TABLE `platos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `idCategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `combo`
+--
+ALTER TABLE `combo`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `navegacion`
+--
+ALTER TABLE `navegacion`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `platos`
+--
+ALTER TABLE `platos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
